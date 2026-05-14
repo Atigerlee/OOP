@@ -66,4 +66,18 @@ public class DBManager {
         }
         return songList;
     }
+
+    public static List<Song> searchSongsFuzzy(String keyword, int limit) {
+        List<Song> allSongs = getAllSongs();
+        org.apache.commons.text.similarity.JaroWinklerDistance distance = new org.apache.commons.text.similarity.JaroWinklerDistance();
+
+        return allSongs.stream()
+                .sorted((s1, s2) -> {
+                    double score1 = distance.apply(s1.getTitle().toLowerCase(), keyword.toLowerCase());
+                    double score2 = distance.apply(s2.getTitle().toLowerCase(), keyword.toLowerCase());
+                    return Double.compare(score2, score1); // Descending order (higher is better)
+                })
+                .limit(limit)
+                .collect(java.util.stream.Collectors.toList());
+    }
 }
