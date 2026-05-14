@@ -1,10 +1,10 @@
 package com.example.oop;
 
-import com.example.oop.database.DBManager;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import com.example.oop.database.DBManager; //import com.example.oop.database.DBManager; //import DBManager
+import javafx.application.Application; // import javafx.fxml.FXML; //import javafx.fxml.FXML
+import javafx.fxml.FXMLLoader; //import javafx.scene.Parent; //import Parent    
+import javafx.scene.Scene; 
+import javafx.stage.Stage; 
 
 import java.io.IOException;
 
