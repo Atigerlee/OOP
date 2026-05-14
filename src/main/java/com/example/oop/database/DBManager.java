@@ -56,6 +56,7 @@ public class DBManager {
                         rs.getInt("id"),
                         rs.getString("title"),
                         rs.getString("artist"),
+                        rs.getString("album"),
                         rs.getString("song_file_path")
                 );
                 songList.add(song);

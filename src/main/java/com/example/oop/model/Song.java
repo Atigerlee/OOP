@@ -9,7 +9,7 @@ public class Song {
     private String photo_file_path;
     private int duration;
 
-    public Song(int id, String title, String artist, String album) {
+    public Song(int id, String title, String artist, String album,String song_file_path) {
         this.id = id;
         this.title = title;
         this.album = album;
