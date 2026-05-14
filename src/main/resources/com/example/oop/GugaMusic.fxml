@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:controller="com.example.oop.HelloController" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #f1f5f9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    
+    <left>
+        <VBox spacing="25" style="-fx-background-color: #1e293b; -fx-padding: 30 20 30 20; -fx-pref-width: 220;">
+            <Label text="🎵 Guga Music" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 0 0 20 0;"/>
+            <Button onAction="#onHomeClick" text="🏠 首頁 (Home)" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16px; -fx-cursor: hand;"/>
+            <Button onAction="#onSaveClick" text="🔖 收藏 (Save)" style="-fx-background-color: transparent; -fx-text-fill: #94a3b8; -fx-font-size: 16px; -fx-cursor: hand;"/>
+            <Button text="🔀 隨機 (Random)" style="-fx-background-color: transparent; -fx-text-fill: #94a3b8; -fx-font-size: 16px; -fx-cursor: hand;"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox>
+            <HBox spacing="15" alignment="CENTER_RIGHT" style="-fx-padding: 20 30 20 30; -fx-background-color: white;">
+                <TextField promptText="🔍 搜尋歌曲、專輯或歌手..." prefWidth="350" style="-fx-background-radius: 20; -fx-padding: 10 15; -fx-background-color: #f1f5f9; -fx-border-color: #e2e8f0; -fx-border-radius: 20;"/>
+                <Pane HBox.hgrow="ALWAYS" /> 
+                <Button fx:id="btnAddSong" onAction="#onAddSongClick" text="＋ 新增歌曲" style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 20; -fx-cursor: hand;"/>
+                <Button text="👤 帳戶" style="-fx-background-color: transparent; -fx-font-size: 14px; -fx-cursor: hand;"/>
+            </HBox>
+
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: #f1f5f9;" VBox.vgrow="ALWAYS">
+                <VBox spacing="30" style="-fx-padding: 30;">
+                    
+                    <VBox fx:id="albumSection" spacing="15">
+                        <Label text="🔥 推薦專輯 (Albums)" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1e293b;"/>
+                        <ScrollPane vbarPolicy="NEVER" hbarPolicy="AS_NEEDED" style="-fx-background-color: transparent; -fx-background: transparent;">
+                            <HBox spacing="20">
+                                <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 5);">
+                                    <Region prefWidth="160" prefHeight="160" style="-fx-background-color: #cbd5e1; -fx-background-radius: 8;"/>
+                                    <Label text="周杰倫精選" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                                    <Label text="Jay Chou" style="-fx-text-fill: #64748b; -fx-font-size: 12px;"/>
+                                </VBox>
+                                <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 5);">
+                                    <Region prefWidth="160" prefHeight="160" style="-fx-background-color: #cbd5e1; -fx-background-radius: 8;"/>
+                                    <Label text="2024 流行指標" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                                    <Label text="Various Artists" style="-fx-text-fill: #64748b; -fx-font-size: 12px;"/>
+                                </VBox>
+                                <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 5);">
+                                    <Region prefWidth="160" prefHeight="160" style="-fx-background-color: #cbd5e1; -fx-background-radius: 8;"/>
+                                    <Label text="爵士放鬆歌單" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                                    <Label text="Jazz Vibes" style="-fx-text-fill: #64748b; -fx-font-size: 12px;"/>
+                                </VBox>
+                            </HBox>
+                        </ScrollPane>
+                    </VBox>
+
+                    <VBox spacing="15" VBox.vgrow="ALWAYS">
+                        <Label fx:id="listTitle" text="🎵 你的單曲 (Singles)" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1e293b;"/>
+                        <ListView fx:id="songListView" prefHeight="350" style="-fx-background-radius: 12; -fx-border-color: transparent; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 5);"/>
+                    </VBox>
+                    
+                </VBox>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="20" alignment="CENTER" style="-fx-background-color: white; -fx-padding: 15 30 15 30; -fx-border-color: #e2e8f0; -fx-border-width: 1 0 0 0;">
+            <HBox spacing="15" alignment="CENTER_LEFT" prefWidth="250">
+                <Region prefWidth="50" prefHeight="50" style="-fx-background-color: #94a3b8; -fx-background-radius: 5;"/>
+                <VBox alignment="CENTER_LEFT">
+                    <Label fx:id="lblCurrentSong" text="還沒有播放音樂" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                    <Label text="Guga Player" style="-fx-text-fill: #64748b; -fx-font-size: 12px;"/>
+                </VBox>
+            </HBox>
+            <VBox spacing="8" alignment="CENTER" HBox.hgrow="ALWAYS">
+                <HBox spacing="20" alignment="CENTER">
+                    <Button onAction="#onPrevClick" text="⏮" style="-fx-background-color: transparent; -fx-font-size: 20px; -fx-cursor: hand;"/>
+                    <Button fx:id="btnPlayPause" onAction="#onPlayPauseClick" text="▶" style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-background-radius: 50; -fx-font-size: 18px; -fx-min-width: 45; -fx-min-height: 45; -fx-cursor: hand;"/>
+                    <Button onAction="#onNextClick" text="⏭" style="-fx-background-color: transparent; -fx-font-size: 20px; -fx-cursor: hand;"/>
+                </HBox>
+                <HBox spacing="10" alignment="CENTER">
+                    <Label fx:id="lblCurrentTime" text="0:00" style="-fx-font-size: 11px; -fx-text-fill: #64748b;"/>
+                    <Slider fx:id="progressSlider" HBox.hgrow="ALWAYS" prefWidth="400" style="-fx-cursor: hand;"/>
+                    <Label fx:id="lblTotalTime" text="0:00" style="-fx-font-size: 11px; -fx-text-fill: #64748b;"/>
+                </HBox>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" prefWidth="250" spacing="10">
+                <Label text="🔊" style="-fx-font-size: 16px;"/>
+                <Slider prefWidth="100" value="70" style="-fx-cursor: hand;"/>
+            </HBox>
+        </HBox>
+    </bottom>
+</BorderPane>
